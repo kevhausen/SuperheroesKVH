@@ -20,11 +20,18 @@ private lateinit var mViewModel:VMSuperhero
         setContentView(R.layout.activity_main)
         lista= ArrayList()
         mViewModel=ViewModelProvider(this).get(VMSuperhero::class.java)
-        mViewModel.listSuperhero.observe(this, Observer {
+        mViewModel.cargarDatosDeInternetAListaDeDB()
+        mViewModel.getListFromDB().observe(this, Observer {
+            lista=it
+            Log.d("lista","dentro observer: ${lista}")
+        })
+        Log.d("lista","fuera del observe: ${lista}")
+
+        /*mViewModel.listSuperhero.observe(this, Observer {
             lista=it //aca tendria que pasar esta lista al recicler view, pero primero necesito guardar lo de internet en mi base de datos.
             Log.d("lista","${lista}")
 
-        })
+        })*/
 
 
 
