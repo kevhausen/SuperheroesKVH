@@ -36,7 +36,7 @@ class AdapterSuperhero(var mDataset : List<Superhero>) : RecyclerView.Adapter<Ad
        val hero =mDataset[position]
         holder.nameSuperhero.text=hero.name
         holder.idSuperhero.text=hero.id.toString()
-        Picasso.get().load("https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/${hero.slug}.jpg").into(holder.imagenSuperhero)
+        Picasso.get().load("https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/${hero.slug}.jpg").into(holder.imagenSuperhero)
     }
 
     override fun getItemCount(): Int {
