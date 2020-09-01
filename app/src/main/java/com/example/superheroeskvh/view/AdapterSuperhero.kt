@@ -36,6 +36,8 @@ class AdapterSuperhero(var mDataset : List<Superhero>) : RecyclerView.Adapter<Ad
        val hero =mDataset[position]
         holder.nameSuperhero.text=hero.name
         holder.idSuperhero.text=hero.id.toString()
+
+        //TODO quitar el hardcodeo de aca, y recibirlo desde la api
         Picasso.get().load("https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/${hero.slug}.jpg").into(holder.imagenSuperhero)
     }
 
