@@ -15,4 +15,7 @@ interface DaoSuperhero {
 
     @Query("SELECT * FROM superhero_table")
     fun getAllSuperheroesFromDB(): LiveData<List<Superhero>>
+
+    @Query("SELECT * FROM superhero_table WHERE id =:idObtained")
+    fun getHeroById(idObtained:Int):LiveData<Superhero>
 }

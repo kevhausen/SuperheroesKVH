@@ -12,10 +12,13 @@ import com.example.superheroeskvh.R
 import com.example.superheroeskvh.model.dataclass.Superhero
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.superhero_viewholder.view.*
+import org.w3c.dom.Text
 
 //viewholder con id, item y foto chica
 
-class AdapterSuperhero(var mDataset : List<Superhero>) : RecyclerView.Adapter<AdapterSuperhero.ViewHolderSuperhero>() {
+class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) : RecyclerView.Adapter<AdapterSuperhero.ViewHolderSuperhero>() {
+
+
 
     fun updateData(list:List<Superhero>){
         mDataset=list
@@ -26,6 +29,7 @@ class AdapterSuperhero(var mDataset : List<Superhero>) : RecyclerView.Adapter<Ad
         var nameSuperhero : TextView = itemView.name_superhero
         var idSuperhero: TextView=itemView.id_superhero
         var imagenSuperhero: ImageView=itemView.image_superhero
+        var publisherH:TextView=itemView.publisher_textview
 
     }
 
@@ -37,15 +41,23 @@ class AdapterSuperhero(var mDataset : List<Superhero>) : RecyclerView.Adapter<Ad
        val hero =mDataset[position]
         holder.nameSuperhero.text=hero.name
         holder.idSuperhero.text=hero.id.toString()
+        holder.publisherH.text=hero.biography.publisher
         Picasso.get().load(hero.images.md).placeholder(R.drawable.ic_launcher_foreground).into(holder.imagenSuperhero)
         //esto hace cada viewholder clikeable
         holder.itemView.setOnClickListener(View.OnClickListener {
-            Toast.makeText(holder.itemView.context,"tocaste",Toast.LENGTH_SHORT).show()
-            //aca quiero que me envie a otra vista
+            //Toast.makeText(holder.itemView.context,"tocaste",Toast.LENGTH_SHORT).show()
+            //aca quiero que me envie al fragment, parece que el viewmodel le tiene que pasar los datos al fragment
+            callAdapter.heroFromAdapterToMain(hero.id)
+
         })
     }
 
     override fun getItemCount(): Int {
         return mDataset.size
+    }
+
+    interface IAdapter{
+        fun heroFromAdapterToMain(id:Int)
+
     }
 }

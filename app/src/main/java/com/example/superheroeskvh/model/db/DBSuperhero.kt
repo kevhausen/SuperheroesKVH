@@ -22,7 +22,8 @@ abstract fun daoSuperhero():DaoSuperhero
                 return createdInstance
             }
             synchronized(this){
-                val newInstance = Room.databaseBuilder(context.applicationContext,DBSuperhero::class.java,"superhero_db").fallbackToDestructiveMigrationFrom(1,2,3,4).build()
+                val newInstance = Room.databaseBuilder(context.applicationContext,DBSuperhero::class.java,"superhero_db")
+                    .fallbackToDestructiveMigrationFrom(1,2,3,4).build()
                 INSTANCE=newInstance
                 return newInstance
             }

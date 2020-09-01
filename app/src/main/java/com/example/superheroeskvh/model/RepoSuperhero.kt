@@ -20,6 +20,13 @@ class RepoSuperhero(context: Context) {
                 return heroListFromDB
         }
 
+        fun getHeroByIdFromDB(id:Int): LiveData<Superhero>{
+                val heroObtainedById = db.daoSuperhero().getHeroById(id)
+                return heroObtainedById
+        }
+
+
+
         suspend fun getAllSuperheroes()=RetrofitClientK.retrofitInstance().getAllSuperheroesFromApi()
 
         fun insertSuperheroesFromWebIntoDB(){
