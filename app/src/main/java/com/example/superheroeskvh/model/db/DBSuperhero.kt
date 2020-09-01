@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.superheroeskvh.model.dataclass.Superhero
 
 //la instancia unica, con if!=null para que solo se cree una vez la base de datos
-@Database(entities = [Superhero::class],version = 1)
+@Database(entities = [Superhero::class],version = 4)
 abstract class DBSuperhero:RoomDatabase() {
 abstract fun daoSuperhero():DaoSuperhero
     companion object{
@@ -22,7 +22,7 @@ abstract fun daoSuperhero():DaoSuperhero
                 return createdInstance
             }
             synchronized(this){
-                val newInstance = Room.databaseBuilder(context.applicationContext,DBSuperhero::class.java,"superhero_db").build()
+                val newInstance = Room.databaseBuilder(context.applicationContext,DBSuperhero::class.java,"superhero_db").fallbackToDestructiveMigrationFrom(1,2,3,4).build()
                 INSTANCE=newInstance
                 return newInstance
             }

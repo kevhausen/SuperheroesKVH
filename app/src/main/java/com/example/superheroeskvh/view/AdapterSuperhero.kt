@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.superheroeskvh.R
 import com.example.superheroeskvh.model.dataclass.Superhero
@@ -36,9 +37,12 @@ class AdapterSuperhero(var mDataset : List<Superhero>) : RecyclerView.Adapter<Ad
        val hero =mDataset[position]
         holder.nameSuperhero.text=hero.name
         holder.idSuperhero.text=hero.id.toString()
-
-        //TODO quitar el hardcodeo de aca, y recibirlo desde la api
-        Picasso.get().load("https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/${hero.slug}.jpg").into(holder.imagenSuperhero)
+        Picasso.get().load(hero.images.md).placeholder(R.drawable.ic_launcher_foreground).into(holder.imagenSuperhero)
+        //esto hace cada viewholder clikeable
+        holder.itemView.setOnClickListener(View.OnClickListener {
+            Toast.makeText(holder.itemView.context,"tocaste",Toast.LENGTH_SHORT).show()
+            //aca quiero que me envie a otra vista
+        })
     }
 
     override fun getItemCount(): Int {
