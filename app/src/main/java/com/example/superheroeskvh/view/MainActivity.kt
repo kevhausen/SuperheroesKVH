@@ -38,7 +38,7 @@ private lateinit var heroAdapter : AdapterSuperhero
         
 
         //aca le estoy agregando a "lista" lo que contiene la lista de la DB, creo que se puede resumir poniendo un parametro que recibe lista en getListFRomDB()
-        mViewModel.getListFromDB().observe(this, Observer {
+        mViewModel.getListFromDB().observe(this,{
             //lista=it
             heroAdapter.updateData(it)
 
@@ -63,10 +63,13 @@ private lateinit var heroAdapter : AdapterSuperhero
         supportFragmentManager.beginTransaction().replace(R.id.hero_fragment,firstFrag).commit()
     }
 
+    //metodo que trae el id del superheroe clikeado al main
     override fun heroFromAdapterToMain(id: Int) {
         //Toast.makeText(this,"${id}",Toast.LENGTH_SHORT).show()
-        heroFragment=FragmentHero()
-        mViewModel.getHeroFromDB(id)
-        supportFragmentManager.beginTransaction().replace(R.id.hero_fragment,heroFragment).commit()
+        heroFragment= FragmentHero()
+        mViewModel.getHeroFromDB(id)//aca se le pasa el id traido desde el adapter al viewmodel, y este va a ir a buscar el superheroe entero a la base de datos.
+        // tode eso en una linea de codigo
+
+        supportFragmentManager.beginTransaction().replace(R.id.hero_fragment,heroFragment).addToBackStack("heroFrag").commit()
     }
 }
