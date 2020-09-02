@@ -11,8 +11,13 @@ import androidx.lifecycle.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.superheroeskvh.R
 import com.example.superheroeskvh.model.dataclass.Superhero
+import com.example.superheroeskvh.model.retrofit.RetrofitClientK
 import com.example.superheroeskvh.viewmodel.VMSuperhero
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+
 /*A group grows great when old men plant trees in whose shade they shall never sit*/
 //instancia de recicler, adapter y viewmodel
 class MainActivity : AppCompatActivity(),AdapterSuperhero.IAdapter {
@@ -31,6 +36,13 @@ private lateinit var heroAdapter : AdapterSuperhero
         //mViewModel.cargarDatosDeInternetAListaDeDB() //este paso parece que se puede unir a otro, desde el repositorio
         heroAdapter=AdapterSuperhero(lista,this)
         initializeRecycler()
+        //TEST
+        //este test demuestra que los aliases si estan llegando desde retrofit, pero no se estan guardando en la base de datos
+        CoroutineScope(Main).launch {
+            val lista1 : List<Superhero> = RetrofitClientK.retrofitInstance().getAllSuperheroesFromApi()
+            Log.d("kevin", lista1.get(1).biography.aliases.toString())
+        }
+
 
 
 

@@ -10,6 +10,7 @@ import com.example.superheroeskvh.R
 import com.example.superheroeskvh.viewmodel.VMSuperhero
 import kotlinx.android.synthetic.main.activity_main.view.*
 
+//aun no uso fragments, estoy mostrando los detalles con dialog
 class FragmentHero : Fragment(),AdapterSuperhero.IAdapter {
     lateinit var mViewModel:VMSuperhero
     override fun onCreateView(

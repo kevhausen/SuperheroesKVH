@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class BiographySH(val fullName : String?,
                        val alterEgos : String?,
-                       @Embedded val aliases : ArrayList<String>?,
+                       @Embedded val aliases : ArrayList<String>?,//pasar a typeconverter
                        val placeOfBirth : String?,
                        val firstAppearance : String?,
                        val publisher : String?,

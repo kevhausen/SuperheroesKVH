@@ -71,6 +71,16 @@ class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) 
             heroDialog.setCancelable(true)
             heroDialog.setContentView(R.layout.hero_dialog_layout)
             heroDialog.hero_dialog_name.text = hero.name
+            heroDialog.publisher_dialog.text=hero.biography.publisher
+            //biography sets
+            heroDialog.fullname_dialogsv.text=hero.biography.fullName
+            heroDialog.alteregos_dialogsv.text=hero.biography.alterEgos
+            heroDialog.aliases_sv.text= hero.biography.aliases.toString() //no me esta llegando esa arraylist embedded desde la base de datos o quizas de retrofit
+            heroDialog.birth_dialogsv.text=hero.biography.placeOfBirth
+            heroDialog.firstAppearance_dialogsv.text=hero.biography.firstAppearance
+            heroDialog.alignment_dialogsv.text=hero.biography.alignment
+
+
 
             val mColor = ContextCompat.getColor(holder.itemView.context, R.color.colorWhite)
 
@@ -85,8 +95,6 @@ class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) 
                     backgroundImg.colorFilter = PorterDuffColorFilter(mColor, PorterDuff.Mode.ADD)
                     heroDialog.dialog_layout.background = backgroundImg
                     //heroDialog.dialog_layout.backgroundTintBlendMode=BlendMode.HARD_LIGHT
-
-
                 }
 
                 override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
@@ -118,6 +126,7 @@ class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) 
     }
 
     //metodo para iniciar el dialog al ahcer click en un viewholder
+
 
 
 

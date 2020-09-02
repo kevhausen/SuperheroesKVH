@@ -1,32 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/dialog_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_layout"
     android:layout_width="330dp"
     android:layout_height="500dp"
     android:layout_gravity="center">
+
+    <ScrollView
+        android:id="@+id/connections_sv"
+        android:layout_width="300dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats_sv">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/stats_sv"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/work_sv">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/appearance_sv"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/work_sv">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/work_sv"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/biography_sv">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <TextView
         android:id="@+id/hero_dialog_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="135dp"
-        android:text="TextView"
+        android:text="ironamn"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/hero_image_dialog"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="128dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:adjustViewBounds="true"
-        />
+    <TextView
+        android:id="@+id/publisher_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginEnd="135dp"
+        android:text="marvel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hero_dialog_name" />
+
+    <ScrollView
+        android:id="@+id/biography_sv"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/publisher_dialog">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/fullname_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="nombre_completo" />
+
+            <TextView
+                android:id="@+id/alteregos_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="alter_egos" />
+
+            <TextView
+                android:id="@+id/aliases_sv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="aliases" />
+
+            <TextView
+                android:id="@+id/birth_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="palce_of_birth" />
+
+            <TextView
+                android:id="@+id/firstAppearance_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="primera_apariencia" />
+
+            <TextView
+                android:id="@+id/alignment_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="alignment" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/biography_titlesv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="biografia"
+        app:layout_constraintBottom_toTopOf="@+id/biography_sv"
+        app:layout_constraintStart_toStartOf="@+id/biography_sv" />
+
+    <TextView
+        android:id="@+id/work_titlesv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="work"
+        app:layout_constraintBottom_toTopOf="@+id/work_sv"
+        app:layout_constraintStart_toStartOf="@+id/work_sv" />
+
+    <TextView
+        android:id="@+id/appearance_titlesv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="apariencia"
+        app:layout_constraintBottom_toTopOf="@+id/appearance_sv"
+        app:layout_constraintStart_toStartOf="@+id/appearance_sv" />
+
+    <TextView
+        android:id="@+id/stats_titlesv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stats"
+        app:layout_constraintBottom_toTopOf="@+id/stats_sv"
+        app:layout_constraintStart_toStartOf="@+id/stats_sv" />
+
+    <TextView
+        android:id="@+id/connections_titlesv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="connections"
+        app:layout_constraintBottom_toTopOf="@+id/connections_sv"
+        app:layout_constraintStart_toStartOf="@+id/connections_sv" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
