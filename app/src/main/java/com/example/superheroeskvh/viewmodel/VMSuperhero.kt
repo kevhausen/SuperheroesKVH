@@ -17,14 +17,10 @@ private val repository=RepoSuperhero(application)
     abstract class fragManager: FragmentManager()
     val heroFragment = FragmentHero()
 
-    fun replaceFragment(){
-
-    }
 
     fun getHeroFromDB(id:Int):LiveData<Superhero>{
         return repository.getHeroByIdFromDB(id)
     }
-
 
     //aca hay una lista vacia aun, neecsito cargarle los datos con un metodo del repositorio
     private val heroListFromDB=repository.getLiveDataHeroListFromDB()
@@ -39,7 +35,6 @@ private val repository=RepoSuperhero(application)
     fun loadDataFromWebToDB(){
         repository.insertSuperheroesFromWebIntoDB()
     }
-
 
     //ahora tengo que llamar a esa lista cargada desde la db (esto es como un getter)
     fun getListFromDB():LiveData<List<Superhero>>{

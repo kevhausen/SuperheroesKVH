@@ -36,27 +36,11 @@ private lateinit var heroAdapter : AdapterSuperhero
         //mViewModel.cargarDatosDeInternetAListaDeDB() //este paso parece que se puede unir a otro, desde el repositorio
         heroAdapter=AdapterSuperhero(lista,this)
         initializeRecycler()
-        //TEST
-        //este test demuestra que los aliases si estan llegando desde retrofit, pero no se estan guardando en la base de datos
-        CoroutineScope(Main).launch {
-            val lista1 : List<Superhero> = RetrofitClientK.retrofitInstance().getAllSuperheroesFromApi()
-            Log.d("kevin", lista1.get(1).biography.aliases.toString())
-        }
-
-
-
-
-
-        
 
         //aca le estoy agregando a "lista" lo que contiene la lista de la DB, creo que se puede resumir poniendo un parametro que recibe lista en getListFRomDB()
         mViewModel.getListFromDB().observe(this,{
-            //lista=it
             heroAdapter.updateData(it)
-
-            Log.d("lista","dentro observer: ${lista}")
         })
-        Log.d("lista","fuera del observe: ${lista}")
 
     }
 
@@ -66,7 +50,6 @@ private lateinit var heroAdapter : AdapterSuperhero
             adapter=heroAdapter
             layoutManager=LinearLayoutManager(this@MainActivity)
             addItemDecoration(TopSpacingItemDecoration(30))
-
         }
     }
     //todos las funcionalides de vistas van en mainacitivity
