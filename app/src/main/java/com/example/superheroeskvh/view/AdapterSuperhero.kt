@@ -126,7 +126,7 @@ class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) 
             val af=heroDialog.dialog_background_load
 
             //SETEANDO IMAGEN COMO BACKGROUND DE LAYOUT CON PICASSO
-            Picasso.get().load(hero.images.lg).into(object : com.squareup.picasso.Target {
+            Picasso.get().load(hero.images.md).into(object : com.squareup.picasso.Target {
                 override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                     val backgroundImg = BitmapDrawable(holder.itemView.context.resources, bitmap)
                     backgroundImg.colorFilter = PorterDuffColorFilter(mColor, PorterDuff.Mode.ADD)
