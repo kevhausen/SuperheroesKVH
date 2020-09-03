@@ -9,6 +9,7 @@ import android.graphics.Color.WHITE
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.media.Image
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.superheroeskvh.R
@@ -60,41 +62,61 @@ class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) 
         Picasso.get().load(hero.images.md).placeholder(R.drawable.ic_launcher_foreground).into(holder.imagenSuperhero)
         //esto hace cada viewholder clikeable
         holder.itemView.setOnClickListener {
-            //Toast.makeText(holder.itemView.context,"tocaste",Toast.LENGTH_SHORT).show()
-            //aca quiero que me envie al fragment, parece que el viewmodel le tiene que pasar los datos al fragment
-
-            //este metodo es para traspasar el id al main, y despues iniciar un fragment, voy a intentar con un dialog primero
-            //callAdapter.heroFromAdapterToMain(hero.id)
-
             val heroDialog = Dialog(holder.itemView.context)
             heroDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             heroDialog.setCancelable(true)
             heroDialog.setContentView(R.layout.hero_dialog_layout)
-            heroDialog.hero_dialog_name.text = hero.name
+
+            //FUNCION PARA SETEAR STRING RESOURCES A LOS TEXTVIEW
+            fun setString(stringResource:Int,heroDetail:String):String{
+                return heroDialog.context.resources.getString(stringResource, heroDetail)
+            }
+
+            //GENERAL TEXT SETS
+            heroDialog.hero_dialog_name.text =hero.name
             heroDialog.publisher_dialog.text=hero.biography.publisher
-            //biography sets
-            heroDialog.fullname_dialogsv.text=hero.biography.fullName
-            heroDialog.alteregos_dialogsv.text=hero.biography.alterEgos
-            heroDialog.aliases_sv.text= hero.biography.aliases.toString() //no me esta llegando esa arraylist embedded desde la base de datos o quizas de retrofit
-            heroDialog.birth_dialogsv.text=hero.biography.placeOfBirth
-            heroDialog.firstAppearance_dialogsv.text=hero.biography.firstAppearance
-            heroDialog.alignment_dialogsv.text=hero.biography.alignment
 
+            //BIOGRAPHY TEXT SETS
+            heroDialog.fullname_dialogsv.text=setString(R.string.full_name,hero.biography.fullName!!)
+            heroDialog.alteregos_dialogsv.text=setString(R.string.alter_egos, hero.biography.alterEgos!!)
+            heroDialog.aliases_sv.text= setString(R.string.aliases,hero.biography.aliases.toString())
+            heroDialog.birth_dialogsv.text=setString(R.string.place_of_birth,hero.biography.placeOfBirth!!)
+            heroDialog.firstAppearance_dialogsv.text=setString(R.string.first_appearance,hero.biography.firstAppearance!!)
+            heroDialog.alignment_dialogsv.text=setString(R.string.alignment,hero.biography.alignment!!)
 
+            //WORK TEXT SETS
+            heroDialog.occupation_dialogsv.text=setString(R.string.occupation,hero.work.occupation!!)
+            heroDialog.base_dialogsv.text=setString(R.string.base,hero.work.base!!)
 
+            //POWERSTATS TEXT SET
+            heroDialog.int_dialogsv.text=setString(R.string.intelligence,hero.powerstats.intelligence.toString())
+            heroDialog.str_dialogsv.text=setString(R.string.strength,hero.powerstats.strength.toString())
+            heroDialog.speed_dialogsv.text=setString(R.string.speed,hero.powerstats.speed.toString())
+            heroDialog.durability_dialogsv.text=setString(R.string.durability,hero.powerstats.durability.toString())
+            heroDialog.power_dialogsv.text=setString(R.string.power,hero.powerstats.power.toString())
+            heroDialog.combat_dialogsv.text=setString(R.string.combat,hero.powerstats.combat.toString())
+
+            //CONNECTIONS TEXT SET
+            heroDialog.gaffiliation_dialogsv.text=setString(R.string.group_affiliation,hero.connections.groupAffiliation!!)
+            heroDialog.relatives_dialogsv.text=setString(R.string.relatives,hero.connections.relatives!!)
+
+            //APPEARANCE TEXT SET
+            heroDialog.gender_dialogsv.text=setString(R.string.gender,hero.appearance.gender!!)
+            heroDialog.race_dialogsv.text=setString(R.string.race,hero.appearance.race!!)
+            heroDialog.height_dialogsv.text=setString(R.string.height,hero.appearance.height!![1])
+            heroDialog.weight_dialogsv.text=setString(R.string.weight,hero.appearance.weight!![1])
+            heroDialog.eyecolor_dialogsv.text=setString(R.string.eyecolor,hero.appearance.eyeColor!!)
+            heroDialog.haircolor_dialogsv.text=setString(R.string.haircolor,hero.appearance.hairColor!!)
+
+            //COLOR BLANCO PARA METERLO EN EL FILTER
             val mColor = ContextCompat.getColor(holder.itemView.context, R.color.colorWhite)
 
-
-            //aca estoy haciendo blanquecina la imagen que va a ponerse en hero_image_dialog
-            //heroDialog.hero_image_dialog.colorFilter=
-
-            //Picasso.get().load(hero.images.lg).into(heroDialog.hero_image_dialog)
+            //SETEANDO IMAGEN COMO BACKGROUND DE LAYOUT CON PICASSO
             Picasso.get().load(hero.images.lg).into(object : com.squareup.picasso.Target {
                 override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
                     val backgroundImg = BitmapDrawable(holder.itemView.context.resources, bitmap)
                     backgroundImg.colorFilter = PorterDuffColorFilter(mColor, PorterDuff.Mode.ADD)
                     heroDialog.dialog_layout.background = backgroundImg
-                    //heroDialog.dialog_layout.backgroundTintBlendMode=BlendMode.HARD_LIGHT
                 }
 
                 override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
@@ -106,12 +128,7 @@ class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) 
                     Log.e("dialog", "prepare")
                 }
             })
-            //ImageViewCompat.setImageTintList(heroDialog.hero_image_dialog, ColorStateList.valueOf(mColor))
-
-
             heroDialog.show()
-
-
         }
     }
 
@@ -119,13 +136,14 @@ class AdapterSuperhero(var mDataset : List<Superhero>,val callAdapter:IAdapter) 
         return mDataset.size
     }
 
-    //interface creada para traspasar datos al main
+    //interface creada para traspasar datos al main (TODAVIA NO SE USA)
     interface IAdapter{
         fun heroFromAdapterToMain(id:Int)
 
     }
 
     //metodo para iniciar el dialog al ahcer click en un viewholder
+
 
 
 

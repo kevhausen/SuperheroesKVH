@@ -24,7 +24,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/gaffiliation_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="group afiliation" />
+
+            <TextView
+                android:id="@+id/relatives_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="relatives" />
+        </LinearLayout>
     </ScrollView>
 
     <ScrollView
@@ -39,7 +52,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/int_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="intelligence" />
+
+            <TextView
+                android:id="@+id/str_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="strength" />
+
+            <TextView
+                android:id="@+id/speed_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="speed" />
+
+            <TextView
+                android:id="@+id/durability_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="durability" />
+
+            <TextView
+                android:id="@+id/power_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="power" />
+
+            <TextView
+                android:id="@+id/combat_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="combat" />
+        </LinearLayout>
     </ScrollView>
 
     <ScrollView
@@ -54,7 +104,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/gender_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="gender" />
+
+            <TextView
+                android:id="@+id/race_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="race" />
+
+            <TextView
+                android:id="@+id/height_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="height" />
+
+            <TextView
+                android:id="@+id/weight_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="weight" />
+
+            <TextView
+                android:id="@+id/eyecolor_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="eyecolor" />
+
+            <TextView
+                android:id="@+id/haircolor_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="haircolor" />
+        </LinearLayout>
     </ScrollView>
 
     <ScrollView
@@ -71,7 +158,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/occupation_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ocupacion" />
+
+            <TextView
+                android:id="@+id/base_dialogsv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="base" />
+        </LinearLayout>
     </ScrollView>
 
     <TextView
@@ -81,7 +181,7 @@
         android:layout_marginStart="136dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="135dp"
-        android:text="ironamn"
+        android:text="@string/superhero"
         android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -95,7 +195,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
         android:layout_marginEnd="135dp"
-        android:text="marvel"
+        android:text="@string/publisher"
+        android:textStyle="italic"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hero_dialog_name" />
@@ -158,15 +260,19 @@
         android:id="@+id/biography_titlesv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="biografia"
+        android:text="@string/biography"
+        android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/biography_sv"
         app:layout_constraintStart_toStartOf="@+id/biography_sv" />
 
     <TextView
         android:id="@+id/work_titlesv"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="work"
+        android:text="@string/work"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/work_sv"
         app:layout_constraintStart_toStartOf="@+id/work_sv" />
 
@@ -174,7 +280,9 @@
         android:id="@+id/appearance_titlesv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="apariencia"
+        android:text="@string/appearance"
+        android:textStyle="bold"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/appearance_sv"
         app:layout_constraintStart_toStartOf="@+id/appearance_sv" />
 
@@ -182,7 +290,9 @@
         android:id="@+id/stats_titlesv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="stats"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="@string/powerstats"
         app:layout_constraintBottom_toTopOf="@+id/stats_sv"
         app:layout_constraintStart_toStartOf="@+id/stats_sv" />
 
@@ -190,7 +300,9 @@
         android:id="@+id/connections_titlesv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="connections"
+        android:text="@string/connections"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/connections_sv"
         app:layout_constraintStart_toStartOf="@+id/connections_sv" />
 

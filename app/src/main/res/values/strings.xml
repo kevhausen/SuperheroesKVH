@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">SuperheroesKVH</string>
+    <string name="biography">Biography</string>
+    <string name="work">Work</string>
+    <string name="appearance">Appearance</string>
+    <string name="powerstats">Powerstats</string>
+    <string name="connections">Connections</string>
+    <string name="superhero">superhero</string>
+
+    BIOGRAPHY STRINGS
+    <string name="publisher">publisher</string>
+    <string name="full_name">Full Name: %1$s</string>
+    <string name="alter_egos">Alter egos: %1$s</string>
+    <string name="aliases">Aliases: %1$s</string>
+    <string name="place_of_birth">Place of Birth: %1$s</string>
+    <string name="first_appearance">First Appearance: %1$s</string>
+    <string name="alignment">Alignment: %1$s</string>
+
+    POWERSTATS STRINGS
+    <string name="intelligence">Intelligence: %1$s</string>
+    <string name="strength">Strength: %1$s</string>
+    <string name="speed">Speed: %1$s</string>
+    <string name="durability">Durability: %1$s</string>
+    <string name="power">Power: %1$s</string>
+    <string name="combat">Combat: %1$s</string>
+
+    WORK STRINGS
+    <string name="occupation">Occupation: %1$s</string>
+    <string name="base">Base: %1$s</string>
+
+    CONNECTIONS STRINGS
+    <string name="group_affiliation">Group Affiliation: %1$s</string>
+    <string name="relatives">Relatives: %1$s</string>
+
+    APPEARANCE STRINGS
+    <string name="gender">Gender: %1$s</string>
+    <string name="race">Race: %1$s</string>
+    <string name="height">Height: %1$s</string>
+    <string name="weight">Weight: %1$s</string>
+    <string name="eyecolor">Eye Color: %1$s</string>
+    <string name="haircolor">Hair Color: %1$s</string>
 </resources>
